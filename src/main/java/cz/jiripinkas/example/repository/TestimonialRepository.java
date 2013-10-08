@@ -25,7 +25,7 @@ public class TestimonialRepository {
 	}
 
 	public List<Testimonial> findAll() {
-		return entityManager.createQuery("select t from Testimonial t order by t.createdDate desc", Testimonial.class).getResultList();
+		return entityManager.createNamedQuery(Testimonial.FIND_ALL, Testimonial.class).getResultList();
 	}
 
 	public Testimonial findOne(int testimonialId) {

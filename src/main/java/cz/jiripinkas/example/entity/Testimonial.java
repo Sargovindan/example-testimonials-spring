@@ -8,15 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = Testimonial.FIND_ALL, query = "select t from Testimonial t order by t.createdDate desc") })
 public class Testimonial {
+
+	public static final String FIND_ALL = "Testimonial.findAll";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "testimonial_id")
 	private Integer testimonialId;
-	
+
 	private Date createdDate;
 
 	private String name;
